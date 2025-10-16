@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SimpleScan - RugMeter Lite</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <div class="brand">
+          <img src="icons/icon128.png" alt="SimpleScan mascot" class="brand-logo" />
+          <div class="brand-copy">
+            <h1>SimpleScan</h1>
+            <p class="subtitle">Paste a Solana mint and scan risk in seconds.</p>
+          </div>
+        </div>
+      </header>
+
+      <div class="layout">
+        <div class="primary-column">
+          <section class="input-section">
+            <label for="mintInput" class="sr-only">Solana mint address</label>
+            <input
+              id="mintInput"
+              type="text"
+              autocomplete="off"
+              placeholder="Paste Solana mint..."
+              maxlength="60"
+            />
+            <p id="inputError" class="input-error" hidden></p>
+            <button id="scanButton" type="button" class="scan-button">
+              <span class="button-label">Scan</span>
+              <span class="spinner" hidden></span>
+            </button>
+          </section>
+
+          <section id="resultCard" class="result-card" hidden>
+            <div class="badge-row">
+              <span id="statusBadge" class="status-badge">Safe</span>
+            </div>
+            <p id="whyLine" class="why-line"></p>
+            <div class="stats-row">
+              <div class="stat">
+                <span id="statLiqLabel" class="stat-label">LP (SOL)</span>
+                <span id="statLiqSol" class="stat-value">--</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">FDV ($)</span>
+                <span id="statFdv" class="stat-value">--</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Vol 5m ($)</span>
+                <span id="statVol" class="stat-value">--</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Tx 5m (#)</span>
+                <span id="statTx" class="stat-value">--</span>
+              </div>
+            </div>
+            <div class="analysis-section">
+              <h3 class="analysis-title">Key comparisons</h3>
+              <ul id="analysisList" class="analysis-list"></ul>
+            </div>
+            <div class="link-row">
+              <a id="dexLink" class="link-button" href="#" target="_blank" rel="noopener noreferrer">Dexscreener</a>
+              <a id="pumpLink" class="link-button secondary" href="#" target="_blank" rel="noopener noreferrer">Pump.fun</a>
+              <button id="copyMint" type="button" class="link-button tertiary">Copy Mint</button>
+            </div>
+          </section>
+        </div>
+
+        <section class="recent-section">
+          <div class="recent-header">
+            <h2>Recent scans</h2>
+            <button id="clearRecent" class="clear-button" type="button">Clear</button>
+          </div>
+          <ul id="recentList" class="recent-list"></ul>
+          <p id="recentEmpty" class="recent-empty">No scans yet. They'll show up here.</p>
+        </section>
+      </div>
+    </main>
+
+    <div id="toast" class="toast" hidden>Copied!</div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
